@@ -28,6 +28,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FlaskWA2018aug02\errors.py" />
     <Compile Include="runserver.py" />
     <Compile Include="FlaskWA2018aug02\__init__.py" />
     <Compile Include="FlaskWA2018aug02\views.py" />
@@ -41,6 +42,9 @@
     <Folder Include="FlaskWA2018aug02\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FlaskWA2018aug02\templates\404.html" />
+    <Content Include="FlaskWA2018aug02\templates\500.html" />
+    <Content Include="FlaskWA2018aug02\templates\errors.html" />
     <Content Include="requirements.txt" />
     <Content Include="FlaskWA2018aug02\static\content\bootstrap.css" />
     <Content Include="FlaskWA2018aug02\static\content\bootstrap.min.css" />
@@ -68,6 +72,8 @@
     <Content Include="FlaskWA2018aug02\templates\contact.html" />
     <Content Include="FlaskWA2018aug02\templates\index.html" />
     <Content Include="FlaskWA2018aug02\templates\layout.html" />
+    <None Include="wapythonflaskintellistokdemo - Web Deploy.pubxml" />
+    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env2018aug0202\">

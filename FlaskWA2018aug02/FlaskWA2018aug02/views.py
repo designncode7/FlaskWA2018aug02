@@ -12,18 +12,8 @@ def home():
     """Renders the home page."""
     return render_template(
         'index.html',
-        title='Home Page',
+        title='IS&P DT&IoT Dept',
         year=datetime.now().year,
-    )
-
-@app.route('/contact')
-def contact():
-    """Renders the contact page."""
-    return render_template(
-        'contact.html',
-        title='Contact',
-        year=datetime.now().year,
-        message='Your contact page.'
     )
 
 @app.route('/about')
@@ -33,5 +23,5 @@ def about():
         'about.html',
         title='About',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='ntellistok Demo Web Application created with Flask Micro Framework'
     )

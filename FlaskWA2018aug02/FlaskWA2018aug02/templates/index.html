@@ -2,32 +2,36 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
+<div class="jumbotron">
+    <h2> IoT Device Data: </h2>
+    <pre id="iotdata"></pre>
+    <script>
+        var source = new EventSource('/event_stream');
+        source.onmessage = function (event) {
+            console.log(event.data);
+            var tempjson = String(event.data);
+            tempjson = tempjson.substr(1);
+
+            // Get indices of actual message
+            var start = tempjson.indexOf("\'") + 1;
+            var end = tempjson.lastIndexOf("}") + 1;
+            var length = end - start;
+
+            var cleanJsonString = tempjson.substring(start, length + 1);
+
+            console.log(cleanJsonString);
+            var myiotdata = JSON.parse(cleanJsonString);
+            //alert(myiotdata.date);
+            console.log(myiotdata.date);
+            console.log(myiotdata.temp);
+            console.log(myiotdata.humid);
+
+            document.getElementById("iotdata").innerHTML = cleanJsonString;
+
+        };
+    </script>
+
 </div>
 
 {% endblock %}
