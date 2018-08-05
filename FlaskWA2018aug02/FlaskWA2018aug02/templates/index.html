@@ -4,8 +4,10 @@
 
 
 <div class="jumbotron">
-    <h2> IoT Device Data: </h2>
-    <pre id="iotdata"></pre>
+<h2> IoT Device Data: </h2>
+
+<pre id="iotdata"></pre>
+<div id="tester" style="width:600px;height:250px;"></div>
     <script>
         var source = new EventSource('/event_stream');
         source.onmessage = function (event) {
@@ -23,9 +25,20 @@
             console.log(cleanJsonString);
             var myiotdata = JSON.parse(cleanJsonString);
             //alert(myiotdata.date);
+            var iotdatadate = myiotdata.date;
             console.log(myiotdata.date);
-            console.log(myiotdata.temp);
-            console.log(myiotdata.humid);
+            var iotdatapressure = myiotdata.pressure;
+            console.log('pressure: ' + myiotdata.pressure);
+
+            TESTER = document.getElementById('tester');
+
+            Plotly.plot(TESTER, [{ x: iotdatapressure}],
+                {
+                    margin: { t: 0 }
+                });
+
+            /* Current Plotly.js version */
+            console.log(Plotly.BUILD);
 
             document.getElementById("iotdata").innerHTML = cleanJsonString;
 

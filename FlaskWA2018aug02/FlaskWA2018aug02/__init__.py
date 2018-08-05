@@ -13,10 +13,11 @@ import FlaskWA2018aug02.views
 def stream():
     def event_stream():
         while True:
+            
             bus_service = ServiceBusService(
                 service_namespace='svcbusqueintellidemo',
                 shared_access_key_name='RootManageSharedAccessKey',
-                shared_access_key_value='AziCIylqxj1yggQ4nZoJULZKxPT5CHgCbU=', 
+                shared_access_key_value='aEnrEVeuuAziCIylqxj1yggQ4nZoJULZKxPT5CHgCbU=', 
             )
 
             iotmsg = bus_service.receive_queue_message('iothubqueuefri27-ns', peek_lock=False)
