@@ -17,7 +17,7 @@ def stream():
             bus_service = ServiceBusService(
                 service_namespace='svcbusqueintellidemo',
                 shared_access_key_name='RootManageSharedAccessKey',
-                shared_access_key_value='aEnrEVeuuAziCIylqxj1yggQ4nZoJULZKxPT5CHgCbU=', 
+                shared_access_key_value='', 
             )
 
             iotmsg = bus_service.receive_queue_message('iothubqueuefri27-ns', peek_lock=False)
